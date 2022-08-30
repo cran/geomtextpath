@@ -3,7 +3,7 @@
 ##  path_handling.R                                                          ##
 ##  Part of the geomtextpath R package                                       ##
 ##                                                                           ##
-##  Copyright (C) 2021 by Allan Cameron & Teun van den Brand                 ##
+##  Copyright (C) 2021 - 2022 by Allan Cameron & Teun van den Brand          ##
 ##                                                                           ##
 ##  Licensed under the MIT license - see https://mit-license.org             ##
 ##  or the LICENSE file in the project root directory                        ##
@@ -48,9 +48,15 @@ prepare_path <- function(data, label, gp, params) {
 
 # Trim text area from path
 
-make_gap <- function(path, letters, gap = NA,
-                     padding = 0.05, vjust = 0.5,
-                     vjust_lim = c(0, 1)) {
+make_gap <- function(
+  path,
+  letters,
+  gap       = NA,
+  padding   = 0.05,
+  vjust     = 0.5,
+  vjust_lim = c(0, 1)
+) {
+
   padding <- as_inch(padding)
   if (is.unit(vjust)) {
     vjust <- rep_len(0.5, length(vjust))
@@ -140,12 +146,19 @@ make_gap <- function(path, letters, gap = NA,
   return(path)
 }
 
+
 # Path constructor that filters out subsequent duplicated points that can cause
 # problems for gradient/offset calculations. Also interpolates any NA values in
 # the x, y values to avoid broken paths, and removes any points that have an
 # NA id.
-dedup_path <- function(x, y, id, line_x, line_y,
-                       tolerance = 1000 * .Machine$double.eps) {
+dedup_path <- function(
+  x,
+  y,
+  id,
+  line_x,
+  line_y,
+  tolerance = 1000 * .Machine$double.eps
+) {
 
   vecs <- data_frame(x = interp_na(x), y = interp_na(y), id = id,
                      line_x = line_x, line_y = line_y)
@@ -170,8 +183,15 @@ dedup_path <- function(x, y, id, line_x, line_y,
 
 
 # Converts point-like textpaths into proper text paths.
-pathify <- function(data, hjust, angle, width,
-                     polar_x = NULL, polar_y = NULL, thet = NULL) {
+pathify <- function(
+  data,
+  hjust,
+  angle,
+  width,
+  polar_x = NULL,
+  polar_y = NULL,
+  thet    = NULL
+) {
 
   angle     <- pi * angle / 180
   multi_seq <- Vectorize(seq.default)
@@ -211,9 +231,12 @@ pathify <- function(data, hjust, angle, width,
   data
 }
 
+
 # This adjusts a possible arrow to not have duplicated arrowheads when a path
 # is cut into two due to the path trimming.
+
 tailor_arrow <- function(data, arrow) {
+
   if (is.null(arrow)) {
     return(arrow)
   }
@@ -225,23 +248,25 @@ tailor_arrow <- function(data, arrow) {
   arrow[] <- lapply(arrow, function(x) {
     x[pmin(id, length(x))]
   })
-  angle <- arrow$angle
   ends  <- arrow$ends
+  lens  <- arrow$length
 
   # Ends are 1 = "first", 2 = "last", 3 = "both".
-  # We 'hide' an arrow by setting an NA angle
-  angle[ends == 2 & sides == "pre"]  <- NA_integer_
-  angle[ends == 1 & sides == "post"] <- NA_integer_
-  ends[ends == 3 & sides == "pre"]   <- 1L
-  ends[ends == 3 & sides == "post"]  <- 2L
-  arrow$angle <- angle
-  arrow$ends  <- ends
+  # We 'hide' an arrow by setting a zero length
+  lens[ends == 2 & sides == "pre"]  <- unit(0, "pt")
+  lens[ends == 1 & sides == "post"] <- unit(0, "pt")
+  ends[ends == 3 & sides == "pre"]  <- 1L
+  ends[ends == 3 & sides == "post"] <- 2L
+  arrow$ends   <- ends
+  arrow$length <- lens
   arrow
 }
+
 
 # Grob constructor --------------------------------------------------------
 
 add_path_grob <- function(grob, data, text, gp, params, arrow = NULL) {
+
   has_line  <- !all((gp$lty %||% 1)  %in% c("0", "blank", NA))
   is_opaque <- !all((gp$col %||% 1) %in% c(NA, "transparent"))
   if (has_line && is_opaque) {
