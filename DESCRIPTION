@@ -1,7 +1,7 @@
 Package: geomtextpath
 Type: Package
 Title: Curved Text in 'ggplot2'
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: c(
     person(given = "Allan",
            family = "Cameron",
@@ -20,11 +20,11 @@ LazyData: true
 URL: https://allancameron.github.io/geomtextpath/
 BugReports: https://github.com/AllanCameron/geomtextpath/issues
 Encoding: UTF-8
-Depends: ggplot2, R (>= 3.6.0)
+Depends: ggplot2 (>= 3.5.0), R (>= 3.6.0)
 Imports: grid, scales, systemfonts, rlang, textshaping
-RoxygenNote: 7.2.1
+RoxygenNote: 7.3.1
 Suggests: testthat (>= 3.0.0), covr, knitr, rmarkdown, ragg, roxygen2,
-        sf, xml2, markdown
+        sf, xml2, markdown (>= 1.3)
 Config/testthat/edition: 3
 VignetteBuilder: knitr
 Collate: 'borrowed_gridtext.R' 'coord_curvedpolar.R' 'data.R'
@@ -33,13 +33,14 @@ Collate: 'borrowed_gridtext.R' 'coord_curvedpolar.R' 'data.R'
         'geom_textcurve.R' 'geom_textdensity.R' 'utils.R'
         'geom_textdensity2d.R' 'geom_texthline.R' 'geom_textsf.R'
         'geom_textsmooth.R' 'geom_textvline.R' 'geomtextpath-package.R'
-        'grob_labelpath.R' 'grob_textpath.R' 'onload.R'
-        'path_handling.R' 'scales.R' 'sf_helpers.R' 'smoothing.R'
-        'text_helpers.R' 'text_placement.R' 'trig_helpers.R'
+        'grob_labelpath.R' 'grob_textpath.R' 'guide_axis_textpath.R'
+        'onload.R' 'path_handling.R' 'scales.R' 'sf_helpers.R'
+        'smoothing.R' 'text_helpers.R' 'text_placement.R'
+        'trig_helpers.R'
 NeedsCompilation: no
-Packaged: 2022-08-30 13:53:29 UTC; Administrator
+Packaged: 2024-03-08 23:33:52 UTC; Administrator
 Author: Allan Cameron [aut, cre],
   Teun van den Brand [aut] (<https://orcid.org/0000-0002-9335-7468>)
 Maintainer: Allan Cameron <Allan.Cameron@nhs.scot>
 Repository: CRAN
-Date/Publication: 2022-08-30 17:00:05 UTC
+Date/Publication: 2024-03-09 00:00:05 UTC

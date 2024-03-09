@@ -67,7 +67,7 @@ plotted on an arbitrary path, as shown in the following example:
 ``` r
 # Set a consistent theme for the plots here
 theme_set(theme_minimal() + 
-          theme(axis.line = element_line(size = 0.25, colour = "gray75")))
+          theme(axis.line = element_line(linewidth = 0.25, colour = "gray75")))
 
 t <- seq(5, -1, length.out = 1000) * pi
 
@@ -113,7 +113,7 @@ foundation of the other geoms in this package. The line-based geoms in
 `ggplot` all have two equivalents in this package:
 
 | **ggplot geom**  | **Text equivalent**  | **Label equivalent**  |
-| :--------------- | :------------------- | :-------------------- |
+|:-----------------|:---------------------|:----------------------|
 | `geom_path`      | `geom_textpath`      | `geom_labelpath`      |
 | `geom_segment`   | `geom_textsegment`   | `geom_labelsegment`   |
 | `geom_line`      | `geom_textline`      | `geom_labelline`      |
@@ -233,7 +233,7 @@ such as rivers and roads can be given (curved) text labels:
 ``` r
 
 library(sf)
-#> Linking to GEOS 3.10.2, GDAL 3.4.2, PROJ 8.2.1; sf_use_s2() is TRUE
+#> Linking to GEOS 3.11.0, GDAL 3.5.3, PROJ 9.1.0; sf_use_s2() is TRUE
 
 df <- data.frame(x = c(-4.2518, -3.1883), 
                  y = c(55.8642, 55.9533),
@@ -276,6 +276,10 @@ ggplot(mtcars, aes(mpg, disp)) +
                  linetype = 2, vjust = 1.3, color = "blue4") +
   geom_textabline(slope = 15, intercept = -100, label = "partition line", 
                   color = "green4", hjust = 0.6, vjust = -0.2)
+#> Warning in geom_texthline(yintercept = 200, label = "displacement threshold", : All aesthetics have length 1, but the data has 32 rows.
+#> ℹ Did you mean to use `annotate()`?
+#> Warning in geom_textvline(xintercept = 20, label = "consumption threshold", : All aesthetics have length 1, but the data has 32 rows.
+#> ℹ Did you mean to use `annotate()`?
 ```
 
 <img src="man/figures/README-vline-1.png" width="100%" style="display: block; margin: auto;" />
@@ -416,7 +420,8 @@ ggplot(Indometh, aes(time, conc, group = 1)) +
                   label = lab, rich = TRUE, vjust = -0.5, size = 4.5, 
                   text_smoothing = 40, linecolor = "red4") + 
   xlim(c(0, 4))
-#> Warning: Removed 18 rows containing non-finite values (stat_smooth).
+#> Warning: Removed 18 rows containing non-finite outside the scale range
+#> (`stat_smooth()`).
 ```
 
 <img src="man/figures/README-richtext-1.png" width="100%" style="display: block; margin: auto;" />
@@ -492,7 +497,7 @@ p <- data.frame(x1 = c(seq(0, 10/6 * pi, pi/3),
   ggplot(aes(x1, y1)) +
   geom_rect(aes(xmin = x1, xmax = x2, ymin = y1, ymax = y2, fill = group,
                 alpha = alpha),
-            color = "white", size = 2) +
+            color = "white", linewidth = 2) +
   geom_textpath(data = data.frame(x1 = seq(0, 2 * pi, length = 300),
            y1 = rep(0.5, 300),
            label = rep(c("stats", "effects", "polar"), each = 100)),
@@ -541,7 +546,7 @@ clock <- function(x) {
 
   ggplot(as.data.frame(rbind(hours, minutes)), aes(V1, V3)) + 
       geom_segment(aes(xend = V2, yend = V4), 
-                   size = c(3, 2), lineend = "round") +
+                   linewidth = c(3, 2), lineend = "round") +
       geom_point(x = 0, y = 0, size = 6) +
       scale_x_continuous(limits = c(0, 12), breaks = 1:12,
                          label = as.roman) +
