@@ -1,4 +1,4 @@
-80f7b04dc949fdca0032263c2dcc0fc8 *DESCRIPTION
+1ad40fc4bda857c923aada69425deb2f *DESCRIPTION
 670d8f894afa4289b3c5fb0bb0828a4b *LICENSE
 4cfa4f6c0bb7c98d5743edc28153d0bf *NAMESPACE
 2bf65707c83faed5cac75830a1486e44 *NEWS.md
@@ -91,7 +91,7 @@ c3d06ccc487591f005348f6736e228b2 *man/geom_textsf.Rd
 6b1388f4384ecdfb6e60c54df4353584 *man/textpathGrob.Rd
 08382ce52f8d06d72d9c1c71b85cc809 *man/waterways.Rd
 70028f53584dfdedf11436c4a1d73b81 *tests/testthat.R
-a523b4dae985f958f76230350285a654 *tests/testthat/Rplots.pdf
+6b546a3d66fa2f4ac4ac29c97f53f9a9 *tests/testthat/Rplots.pdf
 d532ee50ae7b5ffabe10d3d4e643c24e *tests/testthat/_snaps/utils.md
 12fb2bad8eac4fa5600491c84a11cc18 *tests/testthat/test-coord_curvedpolar.R
 852c9705c7697c88532be8d9c09a8a53 *tests/testthat/test-geom_labelpath.R
@@ -107,7 +107,7 @@ d532ee50ae7b5ffabe10d3d4e643c24e *tests/testthat/_snaps/utils.md
 67e9249e3fa2f71677d88b998081ab1b *tests/testthat/test-text_helpers.R
 33cb5536ea29aac51423fbce79c5a268 *tests/testthat/test-textpathgrob.R
 f53026b16c7fc233218b8a9bdd56eaf1 *tests/testthat/test-trig_helpers.R
-1072158655e67fbfe6d1331eb5f5c675 *tests/testthat/test-utils.R
+265a3bcd6324aa8732f5f8d09dfb74c8 *tests/testthat/test-utils.R
 6f904d110b6fb81d21462fa6e16661fd *vignettes/aesthetics.Rmd
 b0eb9bed409eb7da9ec2428ee569a673 *vignettes/curved_polar.Rmd
 9c4e3514b5ce0d97063996bd7381aba3 *vignettes/geomtextpath.Rmd

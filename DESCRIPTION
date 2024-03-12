@@ -1,7 +1,7 @@
 Package: geomtextpath
 Type: Package
 Title: Curved Text in 'ggplot2'
-Version: 0.1.2
+Version: 0.1.3
 Authors@R: c(
     person(given = "Allan",
            family = "Cameron",
@@ -38,9 +38,9 @@ Collate: 'borrowed_gridtext.R' 'coord_curvedpolar.R' 'data.R'
         'smoothing.R' 'text_helpers.R' 'text_placement.R'
         'trig_helpers.R'
 NeedsCompilation: no
-Packaged: 2024-03-08 23:33:52 UTC; Administrator
+Packaged: 2024-03-12 13:40:30 UTC; Administrator
 Author: Allan Cameron [aut, cre],
   Teun van den Brand [aut] (<https://orcid.org/0000-0002-9335-7468>)
 Maintainer: Allan Cameron <Allan.Cameron@nhs.scot>
 Repository: CRAN
-Date/Publication: 2024-03-09 00:00:05 UTC
+Date/Publication: 2024-03-12 16:30:03 UTC
