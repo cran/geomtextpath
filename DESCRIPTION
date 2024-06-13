@@ -1,7 +1,7 @@
 Package: geomtextpath
 Type: Package
 Title: Curved Text in 'ggplot2'
-Version: 0.1.3
+Version: 0.1.4
 Authors@R: c(
     person(given = "Allan",
            family = "Cameron",
@@ -21,7 +21,7 @@ URL: https://allancameron.github.io/geomtextpath/
 BugReports: https://github.com/AllanCameron/geomtextpath/issues
 Encoding: UTF-8
 Depends: ggplot2 (>= 3.5.0), R (>= 3.6.0)
-Imports: grid, scales, systemfonts, rlang, textshaping
+Imports: grid, scales, systemfonts, rlang, textshaping (>= 0.4.0)
 RoxygenNote: 7.3.1
 Suggests: testthat (>= 3.0.0), covr, knitr, rmarkdown, ragg, roxygen2,
         sf, xml2, markdown (>= 1.3)
@@ -38,9 +38,9 @@ Collate: 'borrowed_gridtext.R' 'coord_curvedpolar.R' 'data.R'
         'smoothing.R' 'text_helpers.R' 'text_placement.R'
         'trig_helpers.R'
 NeedsCompilation: no
-Packaged: 2024-03-12 13:40:30 UTC; Administrator
+Packaged: 2024-06-12 19:55:02 UTC; Administrator
 Author: Allan Cameron [aut, cre],
   Teun van den Brand [aut] (<https://orcid.org/0000-0002-9335-7468>)
 Maintainer: Allan Cameron <Allan.Cameron@nhs.scot>
 Repository: CRAN
-Date/Publication: 2024-03-12 16:30:03 UTC
+Date/Publication: 2024-06-13 06:40:02 UTC
