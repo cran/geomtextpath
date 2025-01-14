@@ -2,7 +2,7 @@
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  dev = "ragg_png"
+  dev = "png"
 )
 
 ## ----setup--------------------------------------------------------------------
