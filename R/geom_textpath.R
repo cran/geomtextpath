@@ -182,16 +182,16 @@ GeomTextpath <- ggproto("GeomTextpath", Geom,
 
   # These aesthetics will all be available to the draw_panel function
   default_aes = aes(
-    colour     = "black",
-    size       = 3.88,
+    colour     = from_theme(colour %||% ink),
+    size       = from_theme(fontsize),
     hjust      = 0.5,
     vjust      = 0.5,
-    family     = "",
+    family     = from_theme(family),
     fontface   = 1,
     lineheight = 1.2,
     alpha      = NA,
-    linewidth  = 0.5,
-    linetype   = 1,
+    linewidth  = from_theme(linewidth),
+    linetype   = from_theme(linetype),
     spacing    = 0,
     linecolour = NULL,
     textcolour = NULL,
@@ -205,9 +205,6 @@ GeomTextpath <- ggproto("GeomTextpath", Geom,
   },
 
   setup_data = function(data, params) {
-    if (isTRUE(params$text_params$text_only)) {
-      data$linetype <- 0
-    }
     if (all(data$group == -1) && !is.null(data$label)) {
       data$group <- discretise(data$label)
     }
@@ -224,6 +221,10 @@ GeomTextpath <- ggproto("GeomTextpath", Geom,
     lineend = "butt", linejoin = "round", linemitre = 10,
     text_params = static_text_params("text"), arrow = NULL
   ) {
+    if (isTRUE(text_params$text_only)) {
+      data$linetype <- 0
+    }
+
     # We need to change groups to numeric to order them appropriately
     data$group <- discretise(data$group)
 

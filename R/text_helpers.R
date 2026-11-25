@@ -232,8 +232,11 @@ glyph_index <- function(family = "") {
   if (name %in% names(index_cache)) return(index_cache[[name]])
 
   # Get all unicode characters
-  idx     <- intToUtf8(1:65535, multiple = TRUE)
-  idx     <- systemfonts::glyph_info(idx, family = name)
+  idx  <- intToUtf8(1:65535, multiple = TRUE)
+  font <- systemfonts::match_fonts(name)
+  idx  <- systemfonts::glyph_info(
+    idx, path = font$path, index = font$index
+  )
   idx$int <- 1:65535
 
   # Filter invalid glyphs
@@ -365,11 +368,13 @@ parse_richtext <- function(
 # Helpers -----------------------------------------------------------------
 
 font_info_gp <- function(gp = gpar(), res = 72, unit = "inch") {
+  weight <- rep.int("normal", max(length(gp$font), 1L))
+  weight[(gp$font %||% 1) %in% c(2, 4)] <- "bold"
 
   info <- systemfonts::font_info(
     family =  gp$fontfamily %nz% "fallback",
     italic = (gp$font       %||% 1) %in% c(3, 4),
-    bold   = (gp$font       %||% 1) %in% c(2, 4),
+    weight = weight,
     size   =  gp$fontsize   %||% 12,
     res    = res
   )
